@@ -10,8 +10,8 @@ canvas.width = window.innerWidth;
 
 const colors = ["#3288F0", "#34FA99", "#B1E33B", "#FABF34", "#F04C22"];
 
-const ballRadius = 15;
 const ballCount = 500;
+const ballMaxRadius = 30;
 
 const newBall = (event) => {
   let x, y;
@@ -20,11 +20,13 @@ const newBall = (event) => {
     x = event.x;
     y = event.y;
   } else {
-    x = Math.random() * (innerWidth - 2 * ballRadius) + ballRadius;
+    x = Math.random() * (innerWidth - 2 * ballMaxRadius) + ballMaxRadius;
     y = (Math.random() * innerHeight) / 2 + innerHeight / 4;
   }
 
-  const ball = new Ball(c, x, y, ballRadius, randomFrom(colors));
+  const radius = Math.max(ballMaxRadius / 2, Math.random() * ballMaxRadius);
+
+  const ball = new Ball(c, x, y, radius, randomFrom(colors));
   ball.dx = Math.random() - 0.5;
 
   return ball;
