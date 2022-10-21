@@ -27,7 +27,7 @@ const animate = () => {
 };
 
 window.addEventListener("mousedown", (event) => {
-  if (event.button != 1) return;
+  if (event.button != 0) return;
 
   balls.push(newBall(c, event));
 });
